@@ -18,13 +18,18 @@ class Books
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function filterBooks($name, $surename, $title)
+    public function filterBooks($isbn, $name, $surename, $title)
     {
         // Základní SQL dotaz
         $sql = "SELECT * FROM books WHERE 1=1";
         $params = [];
 
         // Přidání podmínek pro filtraci podle parametrů
+        if (!empty($isbn)) {
+            $sql .= " AND isbn LIKE :isbn";
+            $params[':isbn'] = '%' . $isbn . '%';
+        }
+
         if (!empty($name)) {
             $sql .= " AND name LIKE :name";
             $params[':name'] = '%' . $name . '%';

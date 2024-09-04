@@ -33,7 +33,7 @@ if (isset($_POST['update'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Editace Auta</title>
+    <title>Editace Knihy</title>
 </head>
 
 <body>
@@ -59,7 +59,7 @@ if (isset($_POST['update'])) {
         </div>
     </nav>
     <div class="container">
-        <h2 class="h2">Editace auta</h2>
+        <h2 class="h2">Editace knihy</h2>
         <?php if ($carToEdit): ?>
             <form action="edit.php" method="post">
                 <input type="hidden" name="id" value="<?php echo htmlspecialchars($carToEdit['id']); ?>">

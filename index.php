@@ -8,11 +8,12 @@ $instanceBooks = new Books($dbConnection);
 $books = $instanceBooks->getBooks();
 // $selCars = $cars;
 
-if (isset($_GET['name']) || isset($_GET['surename']) || isset($_GET['title'])) {
+if (isset($_GET['isbn']) || isset($_GET['name']) || isset($_GET['surename']) || isset($_GET['title'])) {
+    $selIsbn = $_GET['isbn'];
     $selName = $_GET['name'];
     $selSurename = $_GET['surename'];
     $selTitle = $_GET['title'];
-    $selBooks = $instanceBooks->filterBooks($selName, $selSurename, $selTitle);
+    $selBooks = $instanceBooks->filterBooks($selIsbn, $selName, $selSurename, $selTitle);
 } else {
     $selBooks = $books;
 }
@@ -67,6 +68,7 @@ if (isset($_GET['delete'])) {
     <div class="container">
         <h2 class="h2">Vyhledávání</h2>
         <form action="index.php" method="get">
+            <input class="form-control my-2" name="isbn" type="text" placeholder="Zadejte ISBN" />
             <input class="form-control my-2" name="name" type="text" placeholder="Zadejte jméno" />
             <input class="form-control my-2" name="surename" type="text" placeholder="Zadejte příjmení" />
             <input class="form-control my-2" name="title" type="text" placeholder="Zadejte název knihy" />
