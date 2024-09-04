@@ -4,7 +4,7 @@ include('DbConnect.php');
 
 $conn = new DbConnect();
 $dbConnection = $conn->connect();
-$instanceCars = new Books($dbConnection);
+$instanceBooks = new Books($dbConnection);
 
 if (isset($_POST['add'])) {
     $brand = $_POST['brand'];
@@ -12,7 +12,7 @@ if (isset($_POST['add'])) {
     $reg = $_POST['reg'];
     $km = $_POST['km'];
     $year = $_POST['year'];
-    $instanceCars->addCar($brand, $model, $reg, $km, $year);
+    $instanceBooks->addBook($brand, $model, $reg, $km, $year);
     header("Location: index.php");
     exit();
 }
