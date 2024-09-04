@@ -66,7 +66,7 @@ if (isset($_GET['delete'])) {
         </div>
     </nav>
     <div class="container">
-        <h2 class="h2">Vyhledávání</h2>
+        <h2 class="h2">Vyhledávání knih</h2>
         <form action="index.php" method="get">
             <input class="form-control my-2" name="isbn" type="text" placeholder="Zadejte ISBN" />
             <input class="form-control my-2" name="name" type="text" placeholder="Zadejte jméno" />
