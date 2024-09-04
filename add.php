@@ -7,12 +7,12 @@ $dbConnection = $conn->connect();
 $instanceBooks = new Books($dbConnection);
 
 if (isset($_POST['add'])) {
-    $brand = $_POST['brand'];
-    $model = $_POST['model'];
-    $reg = $_POST['reg'];
-    $km = $_POST['km'];
-    $year = $_POST['year'];
-    $instanceBooks->addBook($brand, $model, $reg, $km, $year);
+    $isbn = $_POST['isbn'];
+    $name = $_POST['name'];
+    $surename = $_POST['surename'];
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $instanceBooks->addBook($isbn, $name, $surename, $title, $description);
     header("Location: index.php");
     exit();
 }
@@ -32,7 +32,7 @@ if (isset($_POST['add'])) {
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Auta</a>
+            <a class="navbar-brand" href="#">Knihy</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -42,10 +42,10 @@ if (isset($_POST['add'])) {
                         <a class="nav-link active" aria-current="page" href="index.php">Seznam aut</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="edit.php">Uprav auto</a>
+                        <a class="nav-link" href="edit.php">Uprav knihu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="add.php">Přidej auto</a>
+                        <a class="nav-link" href="add.php">Přidej knihu</a>
                     </li>
                 </ul>
             </div>
@@ -55,12 +55,12 @@ if (isset($_POST['add'])) {
     <h2 class="h2">Přidání nové knihy</h2>
     <form action="add.php" method="post">
                 <input type="hidden" name="id" value="">
-                <input class="form-control my-2" name="brand" type="text" value="" placeholder="Zadejte značku" required/>
-                <input class="form-control my-2" name="model" type="text" value="" placeholder="Zadejte model" required/>
-                <input class="form-control my-2" name="reg" type="text" value="" placeholder="Zadejte registraci" required/>
-                <input class="form-control my-2" name="km" type="number" value="" placeholder="Zadejte kilometry" required/>
-                <input class="form-control my-2" name="year" type="number" value="" placeholder="Zadejte rok" required/>
-                <input class="btn btn-primary my-2" type="submit" name="add" value="Vlož auto" />
+                <input class="form-control my-2" name="isbn" type="text" value="" placeholder="Zadejte ISBN" required/>
+                <input class="form-control my-2" name="name" type="text" value="" placeholder="Zadejte jméno autora" required/>
+                <input class="form-control my-2" name="surename" type="text" value="" placeholder="Zadejte příjmení autora" required/>
+                <input class="form-control my-2" name="title" type="text" value="" placeholder="Zadejte název knihy" required/>
+                <input class="form-control my-2" name="description" type="text" value="" placeholder="Zadejte popisek" required/>
+                <input class="btn btn-primary my-2" type="submit" name="add" value="Vlož knihu" />
             </form>
     </div>
 

@@ -86,15 +86,15 @@ class Books
     }
 
     // Metoda pro přidání nového auta
-    public function addBook($brand, $model, $reg, $km, $year)
+    public function addBook($isbn, $name, $surename, $title, $description)
     {
-        $sql = "INSERT INTO cars (brand, model, reg, km, year) VALUES (:brand, :model, :reg, :km, :year)";
+        $sql = "INSERT INTO books (isbn, name, surename, title, description) VALUES (:isbn, :name, :surename, :title, :description)";
         $stmt = $this->dbConn->prepare($sql);
-        $stmt->bindParam(':brand', $brand, PDO::PARAM_STR);
-        $stmt->bindParam(':model', $model, PDO::PARAM_STR);
-        $stmt->bindParam(':reg', $reg, PDO::PARAM_STR);
-        $stmt->bindParam(':km', $km, PDO::PARAM_INT);
-        $stmt->bindParam(':year', $year, PDO::PARAM_INT);
+        $stmt->bindParam(':isbn', $isbn, PDO::PARAM_STR);
+        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->bindParam(':surename', $surename, PDO::PARAM_STR);
+        $stmt->bindParam(':title', $title, PDO::PARAM_INT);
+        $stmt->bindParam(':description', $description, PDO::PARAM_INT);
         return $stmt->execute();
     }
 }
