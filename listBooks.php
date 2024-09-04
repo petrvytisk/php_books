@@ -6,7 +6,6 @@ $conn = new DbConnect();
 $dbConnection = $conn->connect();
 $instanceBooks = new Books($dbConnection);
 $books = $instanceBooks->getBooks();
-// $selCars = $cars;
 
 if (isset($_GET['isbn']) || isset($_GET['name']) || isset($_GET['surename']) || isset($_GET['title'])) {
     $selIsbn = $_GET['isbn'];
@@ -17,15 +16,6 @@ if (isset($_GET['isbn']) || isset($_GET['name']) || isset($_GET['surename']) || 
 } else {
     $selBooks = $books;
 }
-
-// Zpracování mazání auta
-if (isset($_GET['delete'])) {
-    $bookId = $_GET['delete'];
-    $instanceBooks->deleteBook($bookId);
-    header("Location: index.php");
-    exit();
-}
-
 ?>
 
 
@@ -79,7 +69,6 @@ if (isset($_GET['delete'])) {
                     <th>Příjmení</th>
                     <th>Název knihy</th>
                     <th>Popis</th>
-                    <th>Akce</th>
                 </tr>
                 <?php foreach ($selBooks as $book): ?>
                     <tr>
@@ -89,10 +78,6 @@ if (isset($_GET['delete'])) {
                         <td><?php echo $book['surename']; ?></td>
                         <td><?php echo $book['title']; ?></td>
                         <td><?php echo $book['description']; ?></td>
-                        <td>
-                            <a class="btn btn-warning" href="edit.php?id=<?php echo $book['id']; ?>">Editovat</a>
-                            <a class="btn btn-warning" href="index.php?delete=<?php echo $book['id']; ?>" onclick="return confirm('Opravdu chcete smazat toto auto?');">Smazat</a>
-                        </td>
                     </tr>
                 <?php endforeach; ?>
             </table>

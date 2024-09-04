@@ -60,14 +60,6 @@ class Books
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function deleteBook($id)
-    {
-        $sql = "DELETE FROM books WHERE id = :id";
-        $stmt = $this->dbConn->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        return $stmt->execute();
-    }
-
     public function getBook($id)
     {
         $sql = "SELECT * FROM books WHERE id = :id";
@@ -77,20 +69,7 @@ class Books
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function updateBook($id, $brand, $model, $reg, $km, $year)
-    {
-        $sql = "UPDATE books SET brand = :brand, model = :model, reg = :reg, km = :km, year = :year WHERE id = :id";
-        $stmt = $this->dbConn->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->bindParam(':brand', $brand, PDO::PARAM_STR);
-        $stmt->bindParam(':model', $model, PDO::PARAM_STR);
-        $stmt->bindParam(':reg', $reg, PDO::PARAM_STR);
-        $stmt->bindParam(':km', $km, PDO::PARAM_INT);
-        $stmt->bindParam(':year', $year, PDO::PARAM_INT);
-        return $stmt->execute();
-    }
-
-    // Metoda pro přidání nového auta
+    // Metoda pro přidání nové knihy
     public function addBook($isbn, $name, $surename, $title, $description)
     {
         $sql = "INSERT INTO books (isbn, name, surename, title, description) VALUES (:isbn, :name, :surename, :title, :description)";
