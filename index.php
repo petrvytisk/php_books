@@ -45,14 +45,14 @@ if (isset($_GET['delete'])) {
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Auta</a>
+            <a class="navbar-brand" href="#">Knihy</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Seznam aut</a>
+                        <a class="nav-link active" aria-current="page" href="index.php">Seznam knih</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="edit.php">Uprav knihu</a>
@@ -79,21 +79,21 @@ if (isset($_GET['delete'])) {
             <table class="table">
                 <tr>
                     <th>ID</th>
-                    <th>Značka</th>
-                    <th>Model</th>
-                    <th>Registrace</th>
-                    <th>Kilometry</th>
-                    <th>Rok</th>
+                    <th>ISBN</th>
+                    <th>Jméno</th>
+                    <th>Příjmení</th>
+                    <th>Název knihy</th>
+                    <th>Popis</th>
                     <th>Akce</th>
                 </tr>
                 <?php foreach ($selBooks as $book): ?>
                     <tr>
                         <td><?php echo $book['id']; ?></td>
-                        <td><?php echo $book['brand']; ?></td>
-                        <td><?php echo $book['model']; ?></td>
-                        <td><?php echo $book['reg']; ?></td>
-                        <td><?php echo $book['km']; ?></td>
-                        <td><?php echo $book['year']; ?></td>
+                        <td><?php echo $book['isbn']; ?></td>
+                        <td><?php echo $book['name']; ?></td>
+                        <td><?php echo $book['surename']; ?></td>
+                        <td><?php echo $book['title']; ?></td>
+                        <td><?php echo $book['description']; ?></td>
                         <td>
                             <a class="btn btn-warning" href="edit.php?id=<?php echo $book['id']; ?>">Editovat</a>
                             <a class="btn btn-warning" href="index.php?delete=<?php echo $book['id']; ?>" onclick="return confirm('Opravdu chcete smazat toto auto?');">Smazat</a>
