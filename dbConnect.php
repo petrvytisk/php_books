@@ -2,7 +2,7 @@
 class DbConnect
 {
     private $server = 'localhost';
-    private $dbname = 'cars';
+    private $dbname = 'books';
     private $user = 'root';
     private $pass = '';
     private $options = array(
