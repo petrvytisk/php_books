@@ -53,13 +53,13 @@ if (isset($_GET['delete'])) {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Seznam knih</a>
+                        <a class="nav-link active" aria-current="page" href="index.php">Vyhledávání knih</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="edit.php">Uprav knihu</a>
+                        <a class="nav-link" href="listBooks.php">Seznam knih</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="add.php">Přidej knihu</a>
+                        <a class="nav-link" href="add.php">Vkládání knih</a>
                     </li>
                 </ul>
             </div>
