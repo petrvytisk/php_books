@@ -21,7 +21,7 @@ if (isset($_GET['isbn']) || isset($_GET['name']) || isset($_GET['surename']) || 
 
 <!-- HTML -->
 
-</html>
+
 
 <!DOCTYPE html>
 <html lang="en">
