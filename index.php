@@ -8,11 +8,11 @@ $instanceBooks = new Books($dbConnection);
 $books = $instanceBooks->getBooks();
 // $selCars = $cars;
 
-if (isset($_GET['brand']) || isset($_GET['model']) || isset($_GET['reg'])) {
-    $selBrand = $_GET['brand'];
-    $selModel = $_GET['model'];
-    $selReg = $_GET['reg'];
-    $selBooks = $instanceBooks->filterBooks($selBrand, $selModel, $selReg);
+if (isset($_GET['name']) || isset($_GET['surename']) || isset($_GET['title'])) {
+    $selName = $_GET['name'];
+    $selSurename = $_GET['surename'];
+    $selTitle = $_GET['title'];
+    $selBooks = $instanceBooks->filterBooks($selName, $selSurename, $selTitle);
 } else {
     $selBooks = $books;
 }
@@ -67,9 +67,9 @@ if (isset($_GET['delete'])) {
     <div class="container">
         <h2 class="h2">Vyhledávání</h2>
         <form action="index.php" method="get">
-            <input class="form-control my-2" name="brand" type="text" placeholder="Zadejte značku" />
-            <input class="form-control my-2" name="model" type="text" placeholder="Zadejte model" />
-            <input class="form-control my-2" name="reg" type="text" placeholder="Zadejte registraci" />
+            <input class="form-control my-2" name="name" type="text" placeholder="Zadejte jméno" />
+            <input class="form-control my-2" name="surename" type="text" placeholder="Zadejte příjmení" />
+            <input class="form-control my-2" name="title" type="text" placeholder="Zadejte název knihy" />
             <input class="btn btn-primary my-2" type="submit" placeholder="Odešli" />
         </form>
         <?php

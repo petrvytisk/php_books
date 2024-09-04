@@ -18,26 +18,26 @@ class Books
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function filterBooks($brand, $model, $reg)
+    public function filterBooks($name, $surename, $title)
     {
         // Základní SQL dotaz
         $sql = "SELECT * FROM books WHERE 1=1";
         $params = [];
 
         // Přidání podmínek pro filtraci podle parametrů
-        if (!empty($brand)) {
-            $sql .= " AND brand LIKE :brand";
-            $params[':brand'] = '%' . $brand . '%';
+        if (!empty($name)) {
+            $sql .= " AND name LIKE :name";
+            $params[':name'] = '%' . $name . '%';
         }
 
-        if (!empty($model)) {
-            $sql .= " AND model LIKE :model";
-            $params[':model'] = '%' . $model . '%';
+        if (!empty($surename)) {
+            $sql .= " AND surename LIKE :surename";
+            $params[':surename'] = '%' . $surename . '%';
         }
 
-        if (!empty($reg)) {
-            $sql .= " AND reg LIKE :reg";
-            $params[':reg'] = '%' . $reg . '%';
+        if (!empty($title)) {
+            $sql .= " AND title LIKE :title";
+            $params[':title'] = '%' . $title . '%';
         }
 
         // Příprava SQL dotazu
