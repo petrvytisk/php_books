@@ -57,7 +57,7 @@ class Books
 
     public function deleteCar($id)
     {
-        $sql = "DELETE FROM cars WHERE id = :id";
+        $sql = "DELETE FROM books WHERE id = :id";
         $stmt = $this->dbConn->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
@@ -65,7 +65,7 @@ class Books
 
     public function getCar($id)
     {
-        $sql = "SELECT * FROM cars WHERE id = :id";
+        $sql = "SELECT * FROM books WHERE id = :id";
         $stmt = $this->dbConn->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -74,7 +74,7 @@ class Books
 
     public function updateCar($id, $brand, $model, $reg, $km, $year)
     {
-        $sql = "UPDATE cars SET brand = :brand, model = :model, reg = :reg, km = :km, year = :year WHERE id = :id";
+        $sql = "UPDATE books SET brand = :brand, model = :model, reg = :reg, km = :km, year = :year WHERE id = :id";
         $stmt = $this->dbConn->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->bindParam(':brand', $brand, PDO::PARAM_STR);

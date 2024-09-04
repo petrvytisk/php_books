@@ -1,26 +1,26 @@
 <?php
-require_once('Cars.php');
+require_once('Books.php');
 include('DbConnect.php');
 
 $conn = new DbConnect();
 $dbConnection = $conn->connect();
-$instanceCars = new Cars($dbConnection);
-$cars = $instanceCars->getCars();
+$instanceBooks = new Books($dbConnection);
+$books = $instanceBooks->getBooks();
 // $selCars = $cars;
 
 if (isset($_GET['brand']) || isset($_GET['model']) || isset($_GET['reg'])) {
     $selBrand = $_GET['brand'];
     $selModel = $_GET['model'];
     $selReg = $_GET['reg'];
-    $selCars = $instanceCars->filterCars($selBrand, $selModel, $selReg);
+    $selBooks = $instanceBooks->filterBooks($selBrand, $selModel, $selReg);
 } else {
-    $selCars = $cars;
+    $selBooks = $books;
 }
 
 // Zpracování mazání auta
 if (isset($_GET['delete'])) {
-    $carId = $_GET['delete'];
-    $instanceCars->deleteCar($carId);
+    $bookId = $_GET['delete'];
+    $instanceBooks->deleteCar($bookId);
     header("Location: index.php");
     exit();
 }
@@ -39,7 +39,7 @@ if (isset($_GET['delete'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Auta</title>
+    <title>Knihy</title>
 </head>
 
 <body>
@@ -55,10 +55,10 @@ if (isset($_GET['delete'])) {
                         <a class="nav-link active" aria-current="page" href="index.php">Seznam aut</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="edit.php">Uprav auto</a>
+                        <a class="nav-link" href="edit.php">Uprav knihu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="add.php">Přidej auto</a>
+                        <a class="nav-link" href="add.php">Přidej knihu</a>
                     </li>
                 </ul>
             </div>
@@ -73,7 +73,7 @@ if (isset($_GET['delete'])) {
             <input class="btn btn-primary my-2" type="submit" placeholder="Odešli" />
         </form>
         <?php
-        if (sizeof($selCars) > 0) {
+        if (sizeof($selBooks) > 0) {
 
         ?>
             <table class="table">
@@ -86,17 +86,17 @@ if (isset($_GET['delete'])) {
                     <th>Rok</th>
                     <th>Akce</th>
                 </tr>
-                <?php foreach ($selCars as $car): ?>
+                <?php foreach ($selBooks as $book): ?>
                     <tr>
-                        <td><?php echo $car['id']; ?></td>
-                        <td><?php echo $car['brand']; ?></td>
-                        <td><?php echo $car['model']; ?></td>
-                        <td><?php echo $car['reg']; ?></td>
-                        <td><?php echo $car['km']; ?></td>
-                        <td><?php echo $car['year']; ?></td>
+                        <td><?php echo $book['id']; ?></td>
+                        <td><?php echo $book['brand']; ?></td>
+                        <td><?php echo $book['model']; ?></td>
+                        <td><?php echo $book['reg']; ?></td>
+                        <td><?php echo $book['km']; ?></td>
+                        <td><?php echo $book['year']; ?></td>
                         <td>
-                            <a class="btn btn-warning" href="edit.php?id=<?php echo $car['id']; ?>">Editovat</a>
-                            <a class="btn btn-warning" href="index.php?delete=<?php echo $car['id']; ?>" onclick="return confirm('Opravdu chcete smazat toto auto?');">Smazat</a>
+                            <a class="btn btn-warning" href="edit.php?id=<?php echo $book['id']; ?>">Editovat</a>
+                            <a class="btn btn-warning" href="index.php?delete=<?php echo $book['id']; ?>" onclick="return confirm('Opravdu chcete smazat toto auto?');">Smazat</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -104,7 +104,7 @@ if (isset($_GET['delete'])) {
 
         <?php
         } else { ?>
-            <p>Žádná auta k zobrazení</p>
+            <p>Žádné knihy k zobrazení</p>
         <?php
         }
         ?>
