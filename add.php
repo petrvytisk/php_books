@@ -1,10 +1,10 @@
 <?php
-require_once('Cars.php');
+require_once('Books.php');
 include('DbConnect.php');
 
 $conn = new DbConnect();
 $dbConnection = $conn->connect();
-$instanceCars = new Cars($dbConnection);
+$instanceCars = new Books($dbConnection);
 
 if (isset($_POST['add'])) {
     $brand = $_POST['brand'];
