@@ -52,7 +52,7 @@ if (isset($_POST['add'])) {
         </div>
     </nav>
     <div class="container">
-    <h2 class="h2">Přidání nového auta</h2>
+    <h2 class="h2">Přidání nové knihy</h2>
     <form action="add.php" method="post">
                 <input type="hidden" name="id" value="">
                 <input class="form-control my-2" name="brand" type="text" value="" placeholder="Zadejte značku" required/>

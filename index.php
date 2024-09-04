@@ -20,7 +20,7 @@ if (isset($_GET['brand']) || isset($_GET['model']) || isset($_GET['reg'])) {
 // Zpracování mazání auta
 if (isset($_GET['delete'])) {
     $bookId = $_GET['delete'];
-    $instanceBooks->deleteCar($bookId);
+    $instanceBooks->deleteBook($bookId);
     header("Location: index.php");
     exit();
 }

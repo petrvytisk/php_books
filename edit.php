@@ -4,12 +4,12 @@ include('DbConnect.php');
 
 $conn = new DbConnect();
 $dbConnection = $conn->connect();
-$instanceCars = new Books($dbConnection);
-$carToEdit = [];
+$instanceBooks = new Books($dbConnection);
+$bookToEdit = [];
 
 if (isset($_GET['id'])) {
-    $carId = $_GET['id'];
-    $carToEdit = $instanceCars->getCar($carId); // Načtení dat auta k editaci
+    $bookId = $_GET['id'];
+    $bookToEdit = $instanceBooks->getBook($bookId); // Načtení dat auta k editaci
 }
 
 // Zpracování aktualizace auta po odeslání formuláře
@@ -20,7 +20,7 @@ if (isset($_POST['update'])) {
     $reg = $_POST['reg'];
     $km = $_POST['km'];
     $year = $_POST['year'];
-    $instanceCars->updateCar($carId, $brand, $model, $reg, $km, $year);
+    $instanceBooks->updateBook($carId, $brand, $model, $reg, $km, $year);
     header("Location: index.php"); // Po úspěšné aktualizaci přesměrování zpět na seznam aut
     exit();
 }
@@ -46,13 +46,13 @@ if (isset($_POST['update'])) {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Seznam aut</a>
+                        <a class="nav-link active" aria-current="page" href="index.php">Seznam knih</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="edit.php">Uprav auto</a>
+                        <a class="nav-link" href="edit.php">Uprav knihu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="add.php">Přidej auto</a>
+                        <a class="nav-link" href="add.php">Přidej knihu</a>
                     </li>
                 </ul>
             </div>

@@ -55,7 +55,7 @@ class Books
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function deleteCar($id)
+    public function deleteBook($id)
     {
         $sql = "DELETE FROM books WHERE id = :id";
         $stmt = $this->dbConn->prepare($sql);
@@ -63,7 +63,7 @@ class Books
         return $stmt->execute();
     }
 
-    public function getCar($id)
+    public function getBook($id)
     {
         $sql = "SELECT * FROM books WHERE id = :id";
         $stmt = $this->dbConn->prepare($sql);
@@ -72,7 +72,7 @@ class Books
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function updateCar($id, $brand, $model, $reg, $km, $year)
+    public function updateBook($id, $brand, $model, $reg, $km, $year)
     {
         $sql = "UPDATE books SET brand = :brand, model = :model, reg = :reg, km = :km, year = :year WHERE id = :id";
         $stmt = $this->dbConn->prepare($sql);
